@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Placeholder, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import MovieCardSkeleton from '../../components/MovieCard/MovieCardSkeleton';
 import useGetMoviesList from '../../hooks/useGetMoviesList';
@@ -15,7 +16,11 @@ const Movies: React.FC = () => {
         <img src="/653613-mini.webp" alt="" />
         <div className="content">
           <h1>Star Wars World</h1>
-          <a href="fdfgd">
+          <a
+            href="https://egybest.cafe/movie/solo-a-star-wars-story-2018/?ref=search-p1"
+            target="_blank"
+            rel="noreferrer"
+          >
             <i className="bx bx-play" />
             <span>Get Last Movie</span>
           </a>
@@ -51,15 +56,14 @@ const Movies: React.FC = () => {
               ) : (
                 <>
                   {movies.results.map(
-                    (movie: {
-                      id: string;
-                      title: string;
-                      release_date: string;
-                    }) => (
+                    (
+                      movie: { title: string; release_date: string },
+                      index: number
+                    ) => (
                       <MovieCard
                         title={movie.title}
-                        id={movie.id}
-                        key={movie.id}
+                        id={index + 1}
+                        key={movie.title}
                         releaseDate={new Date(movie.release_date)}
                       />
                     )
@@ -101,13 +105,16 @@ const Movies: React.FC = () => {
                   ) : (
                     <>
                       {movies.results.map(
-                        (movie: {
-                          id: string;
-                          title: string;
-                          release_date: string;
-                        }) => (
-                          <tr key={movie.id}>
-                            <td>{movie.title}</td>
+                        (
+                          movie: { title: string; release_date: string },
+                          index: number
+                        ) => (
+                          <tr key={movie.title}>
+                            <td>
+                              <Link to={`/movies/${index + 1}`}>
+                                {movie.title}
+                              </Link>
+                            </td>
                             <td>
                               {new Date(movie.release_date).getFullYear()}
                             </td>
