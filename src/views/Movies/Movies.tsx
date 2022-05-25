@@ -1,10 +1,13 @@
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Button, Placeholder, Table } from 'react-bootstrap';
 import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCardSkeleton from '../../components/MovieCard/MovieCardSkeleton';
+import useGetMoviesList from '../../hooks/useGetMoviesList';
 import './styles.css';
 
 const Movies: React.FC = () => {
   const [grid, setGrid] = React.useState<'grid' | 'table'>('grid');
+  const { movies, isLoading } = useGetMoviesList();
 
   return (
     <div className="movies-layout">
@@ -39,25 +42,80 @@ const Movies: React.FC = () => {
         <div>
           {grid === 'grid' ? (
             <div className="movie-list">
-              <MovieCard />
-              <MovieCard />
-              <MovieCard />
-              <MovieCard />
-              <MovieCard />
-              <MovieCard />
+              {isLoading ? (
+                <>
+                  <MovieCardSkeleton />
+                  <MovieCardSkeleton />
+                  <MovieCardSkeleton />
+                </>
+              ) : (
+                <>
+                  {movies.results.map(
+                    (movie: {
+                      id: string;
+                      title: string;
+                      release_date: string;
+                    }) => (
+                      <MovieCard
+                        title={movie.title}
+                        id={movie.id}
+                        key={movie.id}
+                        releaseDate={new Date(movie.release_date)}
+                      />
+                    )
+                  )}
+                </>
+              )}
             </div>
           ) : (
             <div className="movie-list-table">
               <Table striped bordered hover size="sm" variant="dark">
                 <tbody>
-                  <tr>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  {isLoading ? (
+                    <>
+                      <tr>
+                        <td>
+                          <Placeholder as="span" animation="glow">
+                            <Placeholder md={12} />
+                          </Placeholder>
+                        </td>
+                        <td>
+                          <Placeholder as="span" animation="glow">
+                            <Placeholder xs={2} />
+                          </Placeholder>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <Placeholder as="span" animation="glow">
+                            <Placeholder xs={12} />
+                          </Placeholder>
+                        </td>
+                        <td>
+                          <Placeholder as="span" animation="glow">
+                            <Placeholder xs={2} />
+                          </Placeholder>
+                        </td>
+                      </tr>
+                    </>
+                  ) : (
+                    <>
+                      {movies.results.map(
+                        (movie: {
+                          id: string;
+                          title: string;
+                          release_date: string;
+                        }) => (
+                          <tr key={movie.id}>
+                            <td>{movie.title}</td>
+                            <td>
+                              {new Date(movie.release_date).getFullYear()}
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </>
+                  )}
                 </tbody>
               </Table>
             </div>

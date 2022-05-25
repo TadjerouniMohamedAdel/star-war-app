@@ -2,12 +2,17 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import './styles.css';
 
-const MovieCard: React.FC = () => (
-  <Card className="card-movie">
+type Props = {
+  id: string;
+  title: string;
+  releaseDate: Date;
+};
+const MovieCard: React.FC<Props> = ({ title, id, releaseDate }) => (
+  <Card className="card-movie" id={id}>
     <img src="/movie.jpg" alt="" />
     <div className="info">
-      <span>Title Movie</span>
-      <span>2019</span>
+      <span>{title}</span>
+      <span>{releaseDate.getFullYear()}</span>
     </div>
   </Card>
 );
