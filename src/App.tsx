@@ -21,7 +21,7 @@ const App: React.FC = () => {
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<Movie />} />
           <Route path="/Planetes" element={<Planates />} />
-          <Route path="/planetes/:planeteId" element={<Planate />} />
+          <Route path="/planetes/:planetId" element={<Planate />} />
 
           <Route path="*" element={<Error404 />} />
         </Routes>
