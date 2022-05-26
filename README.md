@@ -8,7 +8,7 @@ yarn
 
 ## Live demo
 
-i deployed the app on netlify : <a href="" target="_blank">web app</a>
+i deployed the app on netlify : <a href="https://star-wars-twazan.netlify.app" target="_blank">web app</a>
 
 ## Tech Choices
 
