@@ -1,0 +1,46 @@
+.planet-card {
+  border-radius: 12px;
+  width: 200px;
+  height: 260px;
+  transition: 0.5s;
+}
+.planet-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.planet-card .imgBox {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  border-radius: 12px;
+}
+
+.planet-card .imgBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+  object-fit: cover;
+}
+.planet-card .info {
+  height: 60px;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-card .info span {
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}

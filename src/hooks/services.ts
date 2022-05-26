@@ -13,4 +13,7 @@ export const fetchByUrl = (url: string) =>
     .then((response) => response.json())
     .then((data) => data);
 
-export const fetchPlanets = () => fetch('http://swapi.dev/api/films');
+export const fetchPlanets = (page: number) =>
+  fetch(`http://swapi.dev/api/planets/?page=${page}`)
+    .then((response) => response.json())
+    .then((data) => data);
