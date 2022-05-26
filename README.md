@@ -15,6 +15,7 @@ i deployed the app on netlify : <a href="https://star-wars-twazan.netlify.app" t
 - setup project with typescript eslint prettier and husky for better clean code
 - react bootstrap as component library
 - css for style customization
+- design : inspered from dribbble
 - react query :Fetch, cache and update data (alternative to graphql)
 - no redux: i didn't use Redux and the reason is simpele the app doesn't has any concrete global state , and am not the kind of developer who store everything on redux, each library has his own context of use (check react query for caching data)
 
