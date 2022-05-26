@@ -8,4 +8,9 @@ export const fetchMovie = (id: number | undefined) =>
     .then((response) => response.json())
     .then((data) => data);
 
+export const fetchByUrl = (url: string) =>
+  fetch(`${url}`)
+    .then((response) => response.json())
+    .then((data) => data);
+
 export const fetchPlanets = () => fetch('http://swapi.dev/api/films');
