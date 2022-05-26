@@ -8,7 +8,6 @@ type Props = {
 };
 const CharacterCard: React.FC<Props> = ({ url }) => {
   const { isLoading, character } = useGetCharacter(url);
-  console.log(isLoading, character);
   return (
     <div className="character-card">
       <div className="imgBox">

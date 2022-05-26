@@ -11,7 +11,6 @@ const Planate = () => {
   const { isLoading, planet } = useGetPlanet(
     id ? `https://swapi.dev/api/planets/${id}` : null
   );
-  console.log(planet, isLoading);
   return (
     <div>
       {!isLoading && (planet.detail === 'Not found' || planet.length === 0) ? (
